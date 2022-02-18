@@ -6,8 +6,8 @@ import {
   Text
 } from '../atoms'
 import {
-  CreateContextTransaction
-} from '../molecules/createContextTransaction'
+  CreateActorTransaction
+} from '../molecules/createActorTransaction'
 import {
   SignTransaction
 } from '../molecules/signTransaction'
@@ -15,14 +15,14 @@ import {
   SendTransaction
 } from '../molecules/sendTransaction'
 
-export const CreateContext = () => {
+export const CreateActor = () => {
   const [unsignedTransaction, setUnsignedTransaction] = useState<UnsignedTransaction>()
-  const [contextId, setContextId] = useState("")
+  const [actorId, setActorId] = useState('')
   const [signature, setSignature] = useState("")
   const [txhash, setTxhash] = useState("")
   return <Card>
     <Stack gap={2}>
-      <CreateContextTransaction setUnsignedTransaction={setUnsignedTransaction} setContextId={setContextId}/>
+      <CreateActorTransaction setUnsignedTransaction={setUnsignedTransaction} setActorId={setActorId}/>
       {
         unsignedTransaction 
         && 
@@ -30,7 +30,7 @@ export const CreateContext = () => {
       }
 
       {
-        contextId.length > 0 && <Text>ContextID: {contextId}</Text>
+        actorId.length > 0 && <Text>ActorID: {actorId}</Text>
       }
 
       {

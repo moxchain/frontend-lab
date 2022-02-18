@@ -6,23 +6,26 @@ import {
   Input,
   Button
 } from '../atoms'
-import { UnsignedTransaction } from '@mox/sdk'
+import { UnsignedTransaction } from '@moxchain/sdk'
 import MoxContext from '../contexts/mox'
 
 export const CreateContextTransaction = ({
-  setUnsignedTransaction
+  setUnsignedTransaction,
+  setContextId,
 }: {
+  setContextId: React.Dispatch<React.SetStateAction<string>>
   setUnsignedTransaction: React.Dispatch<React.SetStateAction<UnsignedTransaction | undefined>>
 }) => {
   const {modules} = useContext(MoxContext)
   if (!modules) throw new Error('Mox not initialized')
   
-  const [identifier, setIdentifier] = useState(0)
+  const [identifier, setIdentifier] = useState("")
 
   const createContext = async () => {
     try {
-      const transaction = await modules.context.createContext(identifier.toString(), 64)
-      setUnsignedTransaction(transaction)
+      const transaction = await modules.context.createContext(identifier, 64)
+      setContextId(transaction.contextId)
+      setUnsignedTransaction(transaction.utx)
     } catch (error) {
       
     }
@@ -33,7 +36,7 @@ export const CreateContextTransaction = ({
       <Stack gap={2}>
         <Title>Create Context</Title>
         <Text>Identifier:</Text>
-        <Input type='number' value={identifier} onChange={(e)=>setIdentifier(e.target.value as any)} />
+        <Input value={identifier} onChange={(e)=>setIdentifier(e.target.value)} />
         <Button style={{
           width: '50vh'
         }} onClick={createContext} >Create</Button>

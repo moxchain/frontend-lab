@@ -1,4 +1,4 @@
-import { Modules } from '@mox/sdk'
+import { Modules } from '@moxchain/sdk'
 import React, { createContext, useState } from 'react'
 
 type PropsMoxContext = {

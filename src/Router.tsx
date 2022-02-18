@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import mox from '@mox/sdk'
+import mox from '@moxchain/sdk'
 import { HomePage, LoginPage } from './pages'
 import MoxContext from './contexts/mox'
 import AddressContext from './contexts/address'
@@ -11,7 +11,7 @@ function Router() {
 
   useEffect(()=>{
     mox({
-      network: 'aquarium',
+      network: 'apertio',
       serviceUrl: 'http://localhost:3000'
     }).then(modules => {
       setModules(modules)

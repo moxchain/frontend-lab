@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap'
 import {
   Button
 } from '../atoms'
-import { UnsignedTransaction } from '@mox/sdk'
+import { UnsignedTransaction } from '@moxchain/sdk'
 import MoxContext from '../contexts/mox'
 
 export const SignTransaction = ({
