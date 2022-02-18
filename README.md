@@ -6,6 +6,7 @@ The proposal is to create a page that allows the user to perform various network
 ## How to run
 
 - Install the project dependencies: _npm install_
+- Connect the sdk with mox node in: _src/Router.tsx_
 - Run react scripts: _npm start_
 
 ## MØX Integration
